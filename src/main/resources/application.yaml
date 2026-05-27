@@ -15,7 +15,7 @@ spring:
   security:
     user:
       name: ${ADMIN_USER_NAME}
-      password: ${ADMIN_USER_PASSWORD}
+      password: ${ADMIN_USER_HASHED_PASSWORD}
 server:
   port: 80
   tomcat:

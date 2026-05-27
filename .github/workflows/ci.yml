@@ -67,5 +67,5 @@ jobs:
           SPRING_DATASOURCE_PASSWORD: rootpassword
           SERVER_PORT: 8080
           ADMIN_USER_NAME: admin
-          ADMIN_USER_PASSWORD: admin
+          ADMIN_USER_HASHED_PASSWORD: admin
         run: ./mvnw test -B

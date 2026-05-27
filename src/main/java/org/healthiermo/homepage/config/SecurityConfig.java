@@ -40,10 +40,10 @@ public class SecurityConfig {
     }
 
     @Bean
-    public UserDetailsService userDetailsService() {
+    public UserDetailsService x() {
         UserDetails user = User.builder()
                 .username(this.adminUsername)
-                .password(passwordEncoder().encode(this.adminPassword))
+                .password(this.adminPassword)
                 .roles("USER")
                 .build();
 
