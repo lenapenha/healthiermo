@@ -27,7 +27,7 @@ class SecurityConfigTest {
     @DynamicPropertySource
     static void overrideProperties(DynamicPropertyRegistry registry) {
         registry.add("spring.security.user.name", () -> "admin");
-        registry.add("spring.security.user.password", () -> "password");
+        registry.add("spring.security.user.password", () -> "$2a$10$j7crAVi5zkOmpCz4a54Oc.xJJkJa5L90Rjtj4DoUZkdgfM.gq4zFK");
     }
 
     @Test
@@ -65,7 +65,7 @@ class SecurityConfigTest {
         UserDetails user = userDetailsService.loadUserByUsername("admin");
 
         assertNotNull(user.getPassword());
-        assertNotEquals("password", user.getPassword());
-        assertTrue(passwordEncoder.matches("password", user.getPassword()));
+        assertNotEquals("testpass", user.getPassword());
+        assertTrue(passwordEncoder.matches("testpass", user.getPassword()));
     }
 }

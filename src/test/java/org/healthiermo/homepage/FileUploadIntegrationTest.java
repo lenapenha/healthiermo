@@ -42,8 +42,8 @@ class FileUploadIntegrationTest {
     @DynamicPropertySource
     static void overrideProperties(DynamicPropertyRegistry registry) {
         registry.add("app.public-data-root", () -> tempDir.toString());
-        registry.add("spring.security.user.name", () -> "testuser");
-        registry.add("spring.security.user.password", () -> "testpass");
+        registry.add("spring.security.user.name", () -> "admin");
+        registry.add("spring.security.user.password", () -> "$2a$10$j7crAVi5zkOmpCz4a54Oc.xJJkJa5L90Rjtj4DoUZkdgfM.gq4zFK");
     }
 
     @Test
@@ -66,7 +66,7 @@ class FileUploadIntegrationTest {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-        headers.setBasicAuth(username, password);
+        headers.setBasicAuth("admin", "testpass");
         HttpEntity<MultiValueMap<String, Object>> request = new HttpEntity<>(body, headers);
 
         RestTemplate restTemplate = new RestTemplate();
